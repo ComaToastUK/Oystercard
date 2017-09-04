@@ -15,10 +15,6 @@ class Oystercard
     @balance += num
   end
 
-  def deduct(num)
-    @balance -= num
-  end
-
   def over_limit?(num)
     @balance + num >= @limit
   end
@@ -30,6 +26,7 @@ class Oystercard
 
   def touch_out
     @in_use = false
+    deduct(@minimum)
   end
 
   def in_journey?
@@ -41,5 +38,8 @@ class Oystercard
   end
 
   private
-
+  
+  def deduct(num)
+    @balance -= num
+  end
 end
