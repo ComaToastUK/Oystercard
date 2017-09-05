@@ -1,9 +1,9 @@
 require 'station'
 
 RSpec.describe Station do
-  subject {described_class.new("Aldgate", 1)}
+  subject { described_class.new('Aldgate', 1) }
   it 'knows station name' do
-    expect(subject.name).to eq ("Aldgate")
+    expect(subject.name).to eq 'Aldgate'
   end
 
   it 'knows station zone' do
