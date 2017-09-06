@@ -6,12 +6,15 @@ class Oystercard
 
   DEFAULT_LIMIT = 90
   DEFAULT_MINIMUM = 1
+  PENALTY_FARE = 7
   def initialize(limit = DEFAULT_LIMIT)
     @balance = 0
     @limit = limit
     @in_use = false
     @minimum = DEFAULT_MINIMUM
-    @history = []
+    @in_journey = false
+    @journey = Journey.new
+    @penalty = PENALTY_FARE
   end
 
   def top_up(num)
@@ -25,18 +28,21 @@ class Oystercard
 
   def touch_in(entry_station)
     raise 'Insufficient funds' if broke?
+    self.in_journey? ? @balance -= @penalty : @balance -= @minimum
     @entry_station = entry_station
+    @journey.start_journey(@entry_station)
+    @in_journey = true
   end
 
   def touch_out(exit_station)
-    current_journey = { entry_station: entry_station, exit_station: exit_station }
     @entry_station = nil
+    @journey.end_journey(exit_station)
     deduct(@minimum)
-    @history << current_journey
+    @in_journey = false
   end
 
   def in_journey?
-    !!@entry_station
+    @in_journey == true
   end
 
   def broke?

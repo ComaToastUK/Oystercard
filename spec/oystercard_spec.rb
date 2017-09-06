@@ -45,6 +45,12 @@ RSpec.describe Oystercard do
       subject.touch_in(entry_station)
       expect(subject.entry_station).to eq entry_station
     end
+    it 'deducts a PENALTY_FARE if the user failed to touch out previously' do
+      subject.top_up(50)
+      subject.touch_in(entry_station)
+      penalty = Oystercard::PENALTY_FARE
+      expect{subject.touch_in(entry_station)}.to change {subject.balance}.by -penalty
+    end
   end
 
   describe '#touch_out(exit_station)' do
@@ -63,12 +69,12 @@ RSpec.describe Oystercard do
       expect { subject.touch_out(exit_station) }.to change { subject.entry_station }.to nil
     end
 
-    it 'saves the journey to history' do
-      subject.top_up(50)
-      subject.touch_in(entry_station)
-      subject.touch_out(exit_station)
-      current_journey = { entry_station: entry_station, exit_station: exit_station }
-      expect(subject.history).to include current_journey
-    end
+    # it 'saves the journey to history' do
+    #   subject.top_up(50)
+    #   subject.touch_in(entry_station)
+    #   subject.touch_out(exit_station)
+    #   current_journey = { entry_station: entry_station, exit_station: exit_station }
+    #   expect(subject.history).to include current_journey
+    # end
   end
 end
