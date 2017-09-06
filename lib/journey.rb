@@ -21,4 +21,8 @@ class Journey
   def entry_station
     @current_journey[:entry_station]
   end
+
+  def exit_station
+    @current_journey[:exit_station]
+  end
 end
