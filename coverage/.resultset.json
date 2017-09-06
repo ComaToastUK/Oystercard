@@ -1,28 +1,42 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/James/Projects/week2_challenges/oystercard/spec/journey_spec.rb": [
+      "/Users/James/Projects/week2_challenges/oystercard/spec/journey_log_spec.rb": [
+        1,
+        1,
         1,
         null,
         1,
         2,
         2,
         2,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         1,
         1,
         1,
         1,
+        null,
+        null,
+        null
+      ],
+      "/Users/James/Projects/week2_challenges/oystercard/lib/journey_log.rb": [
         1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        13,
+        null,
+        null,
+        1,
+        5,
+        null,
         null,
         null
       ],
       "/Users/James/Projects/week2_challenges/oystercard/lib/journey.rb": [
+        1,
         1,
         1,
         null,
@@ -118,6 +132,27 @@
         1,
         null,
         null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/James/Projects/week2_challenges/oystercard/spec/journey_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
         1,
         1,
         null,
@@ -225,6 +260,6 @@
         null
       ]
     },
-    "timestamp": 1504711597
+    "timestamp": 1504717073
   }
 }
