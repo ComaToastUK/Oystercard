@@ -35,9 +35,9 @@ class Oystercard
   end
 
   def touch_out(exit_station)
+    self.in_journey? ? @balance -= @minimum : @balance -= @penalty
     @entry_station = nil
     @journey.end_journey(exit_station)
-    deduct(@minimum)
     @in_journey = false
   end
 
