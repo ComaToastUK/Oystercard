@@ -4,7 +4,7 @@ class Journey
   attr_reader :current_journey
 
   def initialize
-    @current_journey = { :entry_station => nil, :exit_station => nil, :fare => nil }
+    @current_journey = { entry_station: nil, exit_station: nil, fare: nil }
   end
 
   def start_journey(entry_station)
@@ -30,5 +30,4 @@ class Journey
   def fare
     @current_journey[:fare]
   end
-
 end

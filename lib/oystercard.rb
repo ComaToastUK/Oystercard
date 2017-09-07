@@ -54,9 +54,7 @@ class Oystercard
     @balance <= @minimum
   end
 
-  def journey_log
-    @journey_log
-  end
+  attr_reader :journey_log
 
   private
 
