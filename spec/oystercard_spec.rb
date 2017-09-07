@@ -102,10 +102,4 @@ RSpec.describe Oystercard do
       subject.touch_in(enter)
       expect { subject.touch_out(leave)}.to change { subject.balance }.by -4
     end
-
-  describe '#journey_log' do
-    it 'prints the journey_log' do
-
-    end
-  end
 end

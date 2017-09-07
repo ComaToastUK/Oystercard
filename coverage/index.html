@@ -14,14 +14,14 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-09-07T15:10:55+01:00">2017-09-07T15:10:55+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-09-07T16:23:00+01:00">2017-09-07T16:23:00+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">97.59%</span></span>
+    (<span class="covered_percent"><span class="green">98.25%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>8</b> files in total.
-    <b>166</b> relevant lines. 
-    <span class="green"><b>162</b> lines covered</span> and
-    <span class="red"><b>4</b> lines missed </span>
+    <b>171</b> relevant lines. 
+    <span class="green"><b>168</b> lines covered</span> and
+    <span class="red"><b>3</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -62,12 +62,12 @@
       
       <tr>
         <td class="strong"><a href="#82711d5559f61862b5ca9236c427082d7b96325d" class="src_link" title="lib/journey_log.rb">lib/journey_log.rb</a></td>
-        <td class="yellow strong">87.5 %</td>
-        <td>15</td>
-        <td>8</td>
-        <td>7</td>
-        <td>1</td>
-        <td>3.0</td>
+        <td class="green strong">100.0 %</td>
+        <td>18</td>
+        <td>9</td>
+        <td>9</td>
+        <td>0</td>
+        <td>3.1</td>
       </tr>
       
       <tr>
@@ -93,11 +93,11 @@
       <tr>
         <td class="strong"><a href="#8f832e0453673cbc22d2ac355253f79d71837210" class="src_link" title="spec/journey_log_spec.rb">spec/journey_log_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>14</td>
-        <td>11</td>
-        <td>11</td>
+        <td>20</td>
+        <td>15</td>
+        <td>15</td>
         <td>0</td>
-        <td>1.3</td>
+        <td>1.4</td>
       </tr>
       
       <tr>
@@ -113,7 +113,7 @@
       <tr>
         <td class="strong"><a href="#7ccd39e3f21c7b0604d005a56a4ac60886be8b89" class="src_link" title="spec/oystercard_spec.rb">spec/oystercard_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>106</td>
+        <td>105</td>
         <td>64</td>
         <td>64</td>
         <td>0</td>
@@ -395,11 +395,11 @@
         <div class="source_table" id="82711d5559f61862b5ca9236c427082d7b96325d">
   <div class="header">
     <h3>lib/journey_log.rb</h3>
-    <h4><span class="yellow">87.5 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>8</b> relevant lines. 
-      <span class="green"><b>7</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <b>9</b> relevant lines. 
+      <span class="green"><b>9</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -430,8 +430,8 @@
           <code class="ruby">  def initialize</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="5">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="13" data-linenumber="5">
+          <span class="hits">13</span>
           
           <code class="ruby">    @journey_log = []</code>
         </li>
@@ -454,8 +454,8 @@
           <code class="ruby">  def log(current_journey)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="9">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="8" data-linenumber="9">
+          <span class="hits">8</span>
           
           <code class="ruby">    @journey_log &lt;&lt; current_journey</code>
         </li>
@@ -478,19 +478,37 @@
           <code class="ruby">  def print_log</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="13">
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    p @journey_log.to_s</code>
+          <code class="ruby">      @journey_log.each_with_index do |journey|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      puts journey</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="15">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="15">
+        <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">end</code>
@@ -829,13 +847,13 @@
         <li class="missed" data-hits="0" data-linenumber="53">
           
           
-          <code class="ruby">    journey_log = Journey_log.new</code>
+          <code class="ruby">    @journey_log = Journey_log.new</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="54">
           
           
-          <code class="ruby">    journey_log.print_log</code>
+          <code class="ruby">    @journey_log.print_log</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
@@ -1027,8 +1045,8 @@
     <h3>spec/journey_log_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>11</b> relevant lines. 
-      <span class="green"><b>11</b> lines covered</span> and
+      <b>15</b> relevant lines. 
+      <span class="green"><b>15</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1066,20 +1084,20 @@
           <code class="ruby">RSpec.describe Journey_log do</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="6">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="6">
+          <span class="hits">3</span>
           
           <code class="ruby">  subject { described_class.new }</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="7">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="7">
+          <span class="hits">3</span>
           
           <code class="ruby">  let(:entry_station) { double :entry_station }</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="8">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="8">
+          <span class="hits">3</span>
           
           <code class="ruby">  let(:exit_station) { double :exit_station }</code>
         </li>
@@ -1115,6 +1133,42 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  it &#39;prints the journey_log&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    current_journey = { entry_station: entry_station, exit_station: exit_station }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    subject.log(current_journey)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(subject.print_log).to eq [current_journey]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
           
           
           <code class="ruby">end</code>
@@ -1895,12 +1949,6 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="105">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="106">
           
           
           <code class="ruby">end</code>

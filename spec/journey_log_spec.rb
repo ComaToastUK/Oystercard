@@ -11,4 +11,10 @@ RSpec.describe Journey_log do
     subject.log(current_journey)
     expect(subject.journey_log).to include current_journey
   end
+
+  it 'prints the journey_log' do
+    current_journey = { entry_station: entry_station, exit_station: exit_station }
+    subject.log(current_journey)
+    expect(subject.print_log).to eq [current_journey]
+    end
 end

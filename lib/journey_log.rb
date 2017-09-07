@@ -10,6 +10,9 @@ class Journey_log
   end
 
   def print_log
-    p @journey_log.to_s
+      @journey_log.each_with_index do |journey|
+      puts journey
+    end
   end
+
 end
