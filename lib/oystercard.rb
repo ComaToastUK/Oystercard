@@ -33,13 +33,13 @@ class Oystercard
   end
 
   def touch_out(exit_station)
-    @balance -= in_journey? ? @minimum : @penalty
-    @entry_station = nil
     @journey.end_journey(exit_station)
+    @balance -= in_journey? ? calculate_fare : @penalty
+    @entry_station = nil
   end
 
   def in_journey?
-    @journey.entry_station != nil
+    !!@journey.entry_station
   end
 
   def broke?
@@ -50,5 +50,11 @@ class Oystercard
 
   def deduct(num)
     @balance -= num
+  end
+
+  def calculate_fare
+    entry_station = @journey.entry_station
+    exit_station = @journey.exit_station
+    (exit_station[:zone] - entry_station[:zone]).abs + 1
   end
 end
