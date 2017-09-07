@@ -1,5 +1,6 @@
-require 'station'
-require 'journey'
+require_relative 'journey'
+require_relative 'station'
+require_relative 'journey_log'
 
 class Oystercard
   attr_reader :balance, :entry_station, :history
@@ -14,6 +15,7 @@ class Oystercard
     @minimum = DEFAULT_MINIMUM
     @journey = Journey.new
     @penalty = PENALTY_FARE
+    @journey_log = Journey_log.new
   end
 
   def top_up(num)
@@ -25,20 +27,22 @@ class Oystercard
     @balance + num >= @limit
   end
 
-  def touch_in(entry_station)
+  def touch_in(entry_station = Station.new(station, zone))
     raise 'Insufficient funds' if broke?
     @balance -= in_journey? ? @penalty : @minimum
     @entry_station = entry_station
     @journey.start_journey(@entry_station)
   end
 
-  def touch_out(exit_station)
+  def touch_out(exit_station = Station.new(station, zone))
     balance = @balance
     @journey.end_journey(exit_station)
+    @exit_station = exit_station
+    @journey_log.log(@journey.current_journey)
     @balance -= in_journey? ? calculate_fare : @penalty
     @journey_fare = (balance - @balance)
-    @journey.journey_fare(@journey_fare)
     @entry_station = nil
+    @exit_station = nil
   end
 
   def in_journey?
@@ -50,7 +54,6 @@ class Oystercard
   end
 
   def journey_log
-    @journey_log = Journey_log.new
     @journey_log.print_log
   end
 
@@ -61,8 +64,8 @@ class Oystercard
   end
 
   def calculate_fare
-    entry_station = @journey.entry_station
-    exit_station = @journey.exit_station
-    (exit_station[:zone] - entry_station[:zone]).abs + 1
+    entry_station = @entry_station.zone
+    exit_station = @exit_station.zone
+    (exit_station - entry_station).abs + 1
   end
 end
