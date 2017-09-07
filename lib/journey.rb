@@ -1,12 +1,10 @@
-require 'oystercard'
-require 'station'
-require 'journey_log'
+require_relative 'journey_log'
 
 class Journey
   attr_reader :journey_history
 
   def initialize
-    @current_journey = { entry_station: nil, exit_station: nil }
+    @current_journey = { entry_station: nil, exit_station: nil, fare: nil }
     @journey_log = Journey_log.new
   end
 
@@ -26,5 +24,15 @@ class Journey
   def exit_station
     @current_journey[:exit_station]
   end
-  
+
+  def fare
+    @current_journey[:fare]
+  end
+
+  def journey_fare(fare)
+    @current_journey[:fare] = fare
+    @journey_log.log(@current_journey)
+  end
+
+
 end

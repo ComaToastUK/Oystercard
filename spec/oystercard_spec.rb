@@ -76,6 +76,11 @@ RSpec.describe Oystercard do
 
     it 'deducts a PENALTY_FARE if the user failed to touch in previously' do
       subject.top_up(50)
+      journey = double :journey
+      enter = { :name => nil, :zone => nil}
+      leave = { :name => "Bounds Green", :zone => 4 }
+      allow(journey).to receive(:entry_station).and_return enter
+      allow(journey).to receive(:exit_station).and_return leave
       penalty = Oystercard::PENALTY_FARE
       expect { subject.touch_out(exit_station) }.to change { subject.balance }.by -penalty
     end
@@ -98,4 +103,9 @@ RSpec.describe Oystercard do
       expect { subject.touch_out(leave)}.to change { subject.balance }.by -4
     end
 
+  describe '#journey_log' do
+    it 'prints the journey_log' do
+
+    end
+  end
 end

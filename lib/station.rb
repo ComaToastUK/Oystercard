@@ -1,6 +1,6 @@
 class Station
   def initialize(name, zone)
-    @station = { name: name, zone: zone }
+    @station = { :name => name, :zone => zone }
   end
 
   def name
