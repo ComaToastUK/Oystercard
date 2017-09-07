@@ -15,6 +15,10 @@ class Journey
     @current_journey[:exit_station] = exit_station
   end
 
+  def get_fare(fare)
+    @current_journey[:fare] = fare
+  end
+
   def entry_station
     @current_journey[:entry_station]
   end

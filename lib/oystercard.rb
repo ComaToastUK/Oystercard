@@ -41,6 +41,7 @@ class Oystercard
     @journey_log.log(@journey.current_journey)
     @balance -= in_journey? ? calculate_fare : @penalty
     @journey_fare = (balance - @balance)
+    @journey.get_fare(@journey_fare)
     @entry_station = nil
     @exit_station = nil
   end
@@ -54,7 +55,7 @@ class Oystercard
   end
 
   def journey_log
-    @journey_log.print_log
+    @journey_log
   end
 
   private

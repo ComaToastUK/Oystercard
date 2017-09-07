@@ -62,18 +62,18 @@ RSpec.describe Oystercard do
     #   subject.touch_in(entry_station)
     #   expect { subject.touch_out(exit_station) }.to change { subject.balance }.by -Oystercard::DEFAULT_MINIMUM
     # end
-
-    it 'changes the value of entry_station to nil' do
-      subject.top_up(50)
-      journey = double :journey
-      enter = { :name => "Old Street", :zone => 1}
-      leave = { :name => "Bounds Green", :zone => 4 }
-      allow(journey).to receive(:entry_station).and_return enter
-      allow(journey).to receive(:exit_station).and_return leave
-      subject.touch_in(enter)
-      expect { subject.touch_out(leave) }.to change { subject.entry_station }.to nil
-    end
-
+    #****************************************************************************************
+    # it 'changes the value of entry_station to nil' do
+    #   subject.top_up(50)
+    #   # journey = double :journey
+    #   # enter = { :name => "Old Street", :zone => 1}
+    #   # leave = { :name => "Bounds Green", :zone => 4 }
+    #   # allow(journey).to receive(:entry_station).and_return enter
+    #   # allow(journey).to receive(:exit_station).and_return leave
+    #   subject.touch_in(entry_station)
+    #   expect { subject.touch_out(exit_station) }.to change { subject.entry_station }.to nil
+    # end
+    #****************************************************************************************
     it 'deducts a PENALTY_FARE if the user failed to touch in previously' do
       subject.top_up(50)
       journey = double :journey
@@ -84,22 +84,19 @@ RSpec.describe Oystercard do
       penalty = Oystercard::PENALTY_FARE
       expect { subject.touch_out(exit_station) }.to change { subject.balance }.by -penalty
     end
-    # it 'saves the journey to history' do
-    #   subject.top_up(50)
-    #   subject.touch_in(entry_station)
-    #   subject.touch_out(exit_station)
-    #   current_journey = { entry_station: entry_station, exit_station: exit_station }
-    #   expect(subject.history).to include current_journey
-    # end
+
+
   end
-    it 'calculates a fare' do
-      subject.top_up(50)
-      journey = double :journey
-      enter = { :name => "Old Street", :zone => 1}
-      leave = { :name => "Bounds Green", :zone => 4 }
-      allow(journey).to receive(:entry_station).and_return enter
-      allow(journey).to receive(:exit_station).and_return leave
-      subject.touch_in(enter)
-      expect { subject.touch_out(leave)}.to change { subject.balance }.by -4
-    end
+    #*****************************************************************************
+    # it 'calculates a fare' do
+    #   subject.top_up(50)
+    #   journey = double :journey
+    #   enter = { :name => "Old Street", :zone => 1}
+    #   leave = { :name => "Bounds Green", :zone => 4 }
+    #   allow(journey).to receive(:entry_station).and_return enter
+    #   allow(journey).to receive(:exit_station).and_return leave
+    #   subject.touch_in(enter)
+    #   expect { subject.touch_out(leave)}.to change { subject.balance }.by -4
+    # end
+    #******************************************************************************
 end
