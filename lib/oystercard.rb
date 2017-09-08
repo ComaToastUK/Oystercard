@@ -27,14 +27,14 @@ class Oystercard
     @balance + num >= @limit
   end
 
-  def touch_in(entry_station = Station.new(station, zone))
+  def touch_in(entry_station)
     raise 'Insufficient funds' if broke?
     @balance -= in_journey? ? @penalty : @minimum
     @entry_station = entry_station
     @journey.start_journey(@entry_station)
   end
 
-  def touch_out(exit_station = Station.new(station, zone))
+  def touch_out(exit_station)
     balance = @balance
     @journey.end_journey(exit_station)
     @exit_station = exit_station
@@ -42,6 +42,7 @@ class Oystercard
     @balance -= in_journey? ? calculate_fare : @penalty
     @journey_fare = (balance - @balance)
     @journey.get_fare(@journey_fare)
+    @journey.journey_complete
     @entry_station = nil
     @exit_station = nil
   end

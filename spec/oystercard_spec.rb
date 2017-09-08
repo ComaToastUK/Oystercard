@@ -2,6 +2,7 @@ require 'oystercard'
 
 RSpec.describe Oystercard do
   subject(:oystercard) { described_class.new }
+  let(:zone) { double :zone }
 
   describe '#initialize' do
     it 'has a balance of 0' do
@@ -86,15 +87,17 @@ RSpec.describe Oystercard do
     end
   end
   # *****************************************************************************
-  # it 'calculates a fare' do
-  #   subject.top_up(50)
-  #   journey = double :journey
-  #   enter = { :name => "Old Street", :zone => 1}
-  #   leave = { :name => "Bounds Green", :zone => 4 }
-  #   allow(journey).to receive(:entry_station).and_return enter
-  #   allow(journey).to receive(:exit_station).and_return leave
-  #   subject.touch_in(enter)
-  #   expect { subject.touch_out(leave)}.to change { subject.balance }.by -4
-  # end
+  it 'calculates a fare' do
+    subject.top_up(50)
+    journey = double :journey
+    enter = { :name => "Old Street", :zone => 1}
+    leave = { :name => "Bounds Green", :zone => 4 }
+    allow(:entry_station).to receive(:zone).and_return 1
+    allow(:exit_station).to receive(:zone).and_return 4
+    allow(journey).to receive(:entry_station).and_return enter
+    allow(journey).to receive(:exit_station).and_return leave
+    subject.touch_in(enter)
+    expect { subject.touch_out(leave)}.to change { subject.balance }.by -4
+  end
   # ******************************************************************************
 end

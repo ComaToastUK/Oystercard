@@ -30,4 +30,8 @@ class Journey
   def fare
     @current_journey[:fare]
   end
+
+  def journey_complete
+    puts "Journey between #{@current_journey[:entry_station]} & #{@current_journey[:exit_station]} is complete. You have been charged £#{@current_journey[:fare]}"
+  end
 end
