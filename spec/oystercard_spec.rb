@@ -33,10 +33,6 @@ RSpec.describe Oystercard do
   describe '#touch_in' do
     let(:entry_station) { double :entry_station }
 
-    it 'changes the oystercard status of in_use to true' do
-      subject.top_up(50)
-      expect { subject.touch_in(entry_station) }.to change { subject.in_journey? }.to true
-    end
     it 'raises_error if under £1' do
       message = 'Insufficient funds'
       expect { subject.touch_in(entry_station) }.to raise_error message
@@ -87,17 +83,17 @@ RSpec.describe Oystercard do
     end
   end
   # *****************************************************************************
-  it 'calculates a fare' do
-    subject.top_up(50)
-    journey = double :journey
-    enter = { :name => "Old Street", :zone => 1}
-    leave = { :name => "Bounds Green", :zone => 4 }
-    allow(:entry_station).to receive(:zone).and_return 1
-    allow(:exit_station).to receive(:zone).and_return 4
-    allow(journey).to receive(:entry_station).and_return enter
-    allow(journey).to receive(:exit_station).and_return leave
-    subject.touch_in(enter)
-    expect { subject.touch_out(leave)}.to change { subject.balance }.by -4
-  end
+  # it 'calculates a fare' do
+  #   subject.top_up(50)
+  #   journey = double :journey
+  #   enter = { :name => "Old Street", :zone => 1}
+  #   leave = { :name => "Bounds Green", :zone => 4 }
+  #   allow(:entry_station).to receive(:zone).and_return 1
+  #   allow(:exit_station).to receive(:zone).and_return 4
+  #   allow(journey).to receive(:entry_station).and_return enter
+  #   allow(journey).to receive(:exit_station).and_return leave
+  #   subject.touch_in(enter)
+  #   expect { subject.touch_out(leave)}.to change { subject.balance }.by -4
+  # end
   # ******************************************************************************
 end

@@ -3,11 +3,12 @@ require_relative 'station'
 require_relative 'journey_log'
 
 class Oystercard
-  attr_reader :balance, :entry_station, :history
+
+  attr_reader :balance, :entry_station, :history, :journey_log
 
   DEFAULT_LIMIT = 90
   DEFAULT_MINIMUM = 1
-  PENALTY_FARE = 7
+  PENALTY_FARE = 6
 
   def initialize(limit = DEFAULT_LIMIT)
     @balance = 0
@@ -38,13 +39,14 @@ class Oystercard
     balance = @balance
     @journey.end_journey(exit_station)
     @exit_station = exit_station
-    @journey_log.log(@journey.current_journey)
+    @journey_log.log(@journey.journey_history)
     @balance -= in_journey? ? calculate_fare : @penalty
     @journey_fare = (balance - @balance)
     @journey.get_fare(@journey_fare)
-    @journey.journey_complete
     @entry_station = nil
     @exit_station = nil
+    @journey.journey_complete
+    @journey.reset_journey
   end
 
   def in_journey?
@@ -54,8 +56,6 @@ class Oystercard
   def broke?
     @balance <= @minimum
   end
-
-  attr_reader :journey_log
 
   private
 
